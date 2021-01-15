@@ -1,0 +1,102 @@
+html,body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background: #F2F6FA;
+  /* overflow: hidden; Hide scrollbars */
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
+footer {
+  background-color: #F2F6FA !important;
+}
+
+.topNav .container {
+  border-bottom: 1px solid #E6EAEE;
+}
+.container .columns {
+  margin: 3rem 0;
+}
+
+.media-left img {
+  border-radius: 50%;
+}
+.media-content p {
+  font-size: 14px;
+  line-height: 2.3;
+  font-weight: 700;
+  color: #8F99A3;
+}
+article.post {
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E6EAEE;
+}
+article.post:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.menu-list li{
+  padding: 1px;
+}
+
+
+
+
+.main-navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #00c6ff;
+  -webkit-app-region: drag;
+  height: 50px;  
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:99;
+}
+
+.main-navbar-item {
+  float: left;
+  -webkit-app-region: no-drag !important;
+}
+
+.main-navbar-link {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 10px;
+  text-decoration: none;
+  height: 50px;
+  border: none;
+  font-size: 100%;
+}
+
+.main-navbar-link {
+  background-color: #00c6ff;
+}
+
+.main-navbar-link:hover:not(.active) {
+  background-color: #0072ff;
+  color: white;
+}
+
+.window-control-button {
+  width: 50px;
+}
+
+.main-navbar-active {
+  background-color: #00c6ff;
+}
+
+
+
+.sync-disabled {
+  font-style: italic;
+}

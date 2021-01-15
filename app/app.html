@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    	<title>Gamio</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+		<!-- Bulma Version 0.9.0-->
+		<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+	<body>
+				
+		<ul class="main-navbar">
+			<li class="main-navbar-item"><button class="main-navbar-link" disabled>Gamio</button></li>
+			<li class="main-navbar-item"><button class="main-navbar-link" id="SyncGamesButton" onclick="gamesSync()">Sync Games</button></li>
+			<li class="main-navbar-item"><button class="main-navbar-link">Add games</button></li>
+			<li class="main-navbar-item" style="float:right"><a class="main-navbar-link main-navbar-active window-control-button" id="closeButton">
+				<span><i class="fa fa-times"></i></span>
+			</a></li>
+			<li class="main-navbar-item" style="float:right"><a class="main-navbar-link main-navbar-active window-control-button" id="minimizeButton">
+				<span><i class="fa fa-window-minimize"></i></span>
+			</a></li>
+		</ul>
+		<section class="container section mt-5">
+			<nav class="panel is-info" id="games">
+				<!--<div class="panel-block">
+				  <p class="control has-icons-left">
+					<input class="input" type="text" placeholder="Search">
+					<span class="icon is-left">
+					  <i class="fas fa-search" aria-hidden="true"></i>
+					</span>
+				  </p>
+				</div>
+				<p class="panel-tabs">
+				  <a class="is-active">All</a>
+				  <a>Public</a>
+				  <a>Private</a>
+				  <a>Sources</a>
+				  <a>Forks</a>
+				</p>-->
+				<div class="panel-block">
+				  <button class="button is-link is-outlined is-fullwidth">
+					Reset all filters
+				  </button>
+				</div>
+			  </nav>		</section>
+		<footer class="footer">
+			<div class="container">
+				
+			</div>
+        </footer>
+        
+        <script src="js/UI//bulma.js"></script>
+
+        <script>
+			var games = []
+			
+			function Play(id) {
+				alert(games.filter(a => a.id == id)[0].target)
+			}
+
+            function updateGames() {
+				document.getElementById("games").innerHTML = `
+					<p class="panel-heading">
+					  Games
+					</p>`
+				games.forEach(game => {
+					/*const article = `
+					
+					<article class="post">
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-32x32">
+										
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">		
+										
+									</div>
+								</div>
+								<div class="media-right">
+									
+								</div>
+							</div>
+						</article>
+					
+					`*/
+			/*							const article = `<article class="media">
+  <figure class="media-left">
+
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+		
+		</p>
+    </div>
+  </div>
+  <div class="media-right">
+	<a onclick="Play('${game.id}')" class="button is-info is-block">
+										<span class="has-text-white"><i class="fa fa-gamepad"></i></span> Play</a>
+  </div>
+</article>`*/	
+					const article = `
+					<a class="panel-block is-active">
+					  <span class="panel-icon">
+						<p class="image is-16x16">
+							<img src="data:image/png;base64,${game.Base64ImageData}">
+						</p>
+						  </span>
+					  <h4 class="${game.isRunning ? "has-text-success" : ""}"> ${game.name} ${game.isRunning ? "- Running" : ""}</h4>
+					</a>`
+
+
+					document.getElementById("games").innerHTML += `${article}`
+				})
+            }
+        </script>
+		<script src="js/IpcClient.js"></script>
+		<script src="js/WindowControls.js"></script>
+
+    </body>
+</html>
