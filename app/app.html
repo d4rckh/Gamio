@@ -25,6 +25,9 @@
 				<span><i class="fa fa-window-minimize"></i></span>
 			</a></li>
 		</ul>
+		<div class="columns">
+			<div class="column is-3">
+			
 		<section class="container section mt-5">
 			<nav class="panel is-info" id="games">
 				<!--<div class="panel-block">
@@ -47,7 +50,20 @@
 					Reset all filters
 				  </button>
 				</div>
-			  </nav>		</section>
+			  </nav>	
+		</section>
+			</div>
+			<div class="div">
+				<div class="hero is-medium">
+					<div class="hero-body">
+						<img src="" id="GameMainMenuIcon" alt="">
+						<div class="title" id="GameMainMenuName"></div>
+						<div class="subtitle" id="GameMainMenuTarget"></div>
+						<div id="controls"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<footer class="footer">
 			<div class="container">
 				
@@ -59,6 +75,34 @@
         <script>
 			var games = []
 			
+			function SwitchToGame(id) {
+				const game = games.filter(a => a.id == id)[0]
+				var btn = document.createElement("button")
+				var controls = document.getElementById("controls");
+				while (controls.firstChild) {
+					controls.removeChild(controls.firstChild);
+				}
+
+				document.getElementById("GameMainMenuName").innerText = game.name
+				document.getElementById("GameMainMenuIcon").src = `data:image/png;base64,${game.Base64ImageData}`
+				document.getElementById("GameMainMenuTarget").innerText = game.target
+				controls.appendChild(btn)
+				
+				btn.disabled = false
+				btn.classList.add("button")
+				btn.classList.add("is-info")
+				btn.classList.add("is-large")
+				btn.innerText = "Start";
+				btn.addEventListener("click", () => {
+					Play(id)
+				})
+				if (game.isRunning) {
+
+					btn.disabled = true
+					document.getElementById("GameMainMenuName").innerText += " (Running)"
+				}
+			}
+
 			function Play(id) {
 				alert(games.filter(a => a.id == id)[0].target)
 			}
@@ -107,7 +151,7 @@
   </div>
 </article>`*/	
 					const article = `
-					<a class="panel-block is-active">
+					<a onclick="SwitchToGame('${game.id}')" class="panel-block is-active">
 					  <span class="panel-icon">
 						<p class="image is-16x16">
 							<img src="data:image/png;base64,${game.Base64ImageData}">
