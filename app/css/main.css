@@ -62,6 +62,10 @@ article.post:last-child {
   z-index:99;
 }
 
+.red-navbar {
+  background-color: #cf3939;
+}
+
 .main-navbar-item {
   float: left;
   -webkit-app-region: no-drag !important;
@@ -82,9 +86,17 @@ article.post:last-child {
   background-color: #00c6ff;
 }
 
+.red-navbar-link {
+  background-color: #cf3939;
+}
+
 .main-navbar-link:hover:not(.active) {
   background-color: #0072ff;
   color: white;
+}
+
+.red-navbar-link:hover:not(.active) {
+  background-color: #ff0000 !important;
 }
 
 .window-control-button {
@@ -94,7 +106,6 @@ article.post:last-child {
 .main-navbar-active {
   background-color: #00c6ff;
 }
-
 
 
 .sync-disabled {

@@ -1,7 +1,11 @@
+
+const sgb = document.getElementById("SyncGamesButton")
 const { ipcRenderer } = require('electron')
 ipcRenderer.on('games-update-async', (event, arg) => {
-    document.getElementById("SyncGamesButton").innerHTML = "Sync Games"
-    document.getElementById("SyncGamesButton").classList.remove("sync-disabled")
+    if (sgb) {
+        sgb.innerHTML = "Sync Games"
+        sgb.classList.remove("sync-disabled")
+    }
     console.log(arg)
     games = arg
     updateGames()
@@ -21,10 +25,11 @@ setTimeout(() => {
 
 const gamesSync = () => {
     console.log("click")
-    document.getElementById("SyncGamesButton").innerHTML = "Syncing Games...."
-    document.getElementById("SyncGamesButton").classList.add("sync-disabled")
+    if (sgb){
+        sgb.innerHTML = "Syncing Games...."
+        sgb.classList.add("sync-disabled")
+    }
     ipcRenderer.send('sync-games', 'ping')
 }
 
-
-document.getElementById("SyncGamesButton").click = gamesSync;
+if (sgb) sgb.click = gamesSync;
